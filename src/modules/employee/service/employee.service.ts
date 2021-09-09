@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { Employee, EmployeeTier } from '../model/employee.in.dto';
+import { EmployeeInputDTO, EmployeeTier } from '../model/employee.in.dto';
 import {v1 as uuid} from 'uuid';
 
 @Injectable()
 export class EmployeesService {
-  private employees: Employee[] = [];
+  private employees: EmployeeInputDTO[] = [];
 
   getAllEmployees() {
     return this.employees;
   }
 
-  createEmployee(employee: Employee){
+  createEmployee(employee: EmployeeInputDTO){
     const empl = {
       id: uuid(),
       firstName: employee.firstName,
@@ -23,7 +23,7 @@ export class EmployeesService {
     return empl;
   }
 
-  getEmployeeById(id: string): Employee {
+  getEmployeeById(id: string): EmployeeInputDTO {
     const employees = this.getAllEmployees();
     return employees.find(e => e.id === id);
   }

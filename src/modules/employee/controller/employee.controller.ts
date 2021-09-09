@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { Employee } from '../model/employee.in.dto';
+import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { EmployeeInputDTO } from '../model/employee.in.dto';
 import { EmployeesService } from '../service/employee.service';
 
 @Controller('employees')
@@ -12,8 +12,9 @@ export class EmployeesController {
   }
 
   @Post()
+  @UsePipes(ValidationPipe)
   createEmployee(
-    @Body() employee: Employee) {
+    @Body() employee: EmployeeInputDTO) {
     return this.employeeService.createEmployee(employee);
   }
 
