@@ -10,17 +10,17 @@ export class EmployeesService {
     return this.employees;
   }
 
-  createEmployee(firstName: string, lastName: string, designation: string, nearestCity: string, tier: EmployeeTier){
-    const employee = {
+  createEmployee(employee: Employee){
+    const empl = {
       id: uuid(),
-      firstName,
-      lastName,
-      designation,
-      nearestCity,
-      tier
+      firstName: employee.firstName,
+      lastName: employee.lastName,
+      designation: employee.designation,
+      nearestCity: employee.nearestCity,
+      tier: employee.tier
     }
-    this.employees.push(employee);
-    return employee;
+    this.employees.push(empl);
+    return empl;
   }
 
   getEmployeeById(id: string): Employee {
@@ -28,6 +28,6 @@ export class EmployeesService {
     return employees.find(e => e.id === id);
   }
 
-  
+
 
 }

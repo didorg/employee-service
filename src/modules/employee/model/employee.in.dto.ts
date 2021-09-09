@@ -1,6 +1,11 @@
-export interface Employee {
+import { IsNotEmpty } from "class-validator";
+
+export class Employee {
   id: string;
+
+  @IsNotEmpty()
   firstName: string;
+
   lastName: string;
   designation: string;
   nearestCity: string;
@@ -8,9 +13,9 @@ export interface Employee {
 }
 
 export enum EmployeeTier {
-  TIER_CERO = 0,
-  TIER_ONE = 1,
-  TIER_TWO = 2,
-  TIER_THREE = 3,
-  TIER_FOUR = 4,
+  TIER_CERO = "CERO",
+  TIER_ONE = "ONE",
+  TIER_TWO = "Two",
+  TIER_THREE = "Three",
+  TIER_FOUR = "FOUR",
 }
