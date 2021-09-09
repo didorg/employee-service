@@ -23,4 +23,11 @@ export class EmployeesService {
     return employee;
   }
 
+  getEmployeeById(id: string): Employee {
+    const employees = this.getAllEmployees();
+    return employees.find(e => e.id === id);
+  }
+
+  
+
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { EmployeesService } from '../service/employee.service';
 
 @Controller('employees')
@@ -25,5 +25,10 @@ export class EmployeesController {
       nearestCity,
       tier,
     );
+  }
+
+  @Get('/:id')
+  getEmployeeById(@Param('id') id:string){
+    return this.employeeService.getEmployeeById(id);
   }
 }
